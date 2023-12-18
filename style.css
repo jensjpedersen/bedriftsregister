@@ -1,0 +1,39 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+html {
+
+   
+    font-size:62.5%;
+}
+
+body {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:3rem;
+    font-size: 2rem;
+}
+
+.resultat {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:2rem;
+    margin-top: 3rem;
+    
+}
+
+.kolonne {
+    padding:2rem;
+    border-bottom:1px solig grey;
+    background-color: lightblue;
+}
+
+select, option, button {
+    padding:1rem 2rem;
+}
+
