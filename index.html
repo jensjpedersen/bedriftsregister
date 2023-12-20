@@ -4,24 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="./script.js" defer></script>
+    <!-- <script src="./script.js" defer></script> -->
+    <script src="./fetch.mjs" type="module"></script>
+    <!-- <script src="./data/kommunenummer.js" type="module"></script> -->
     <title>Document</title>
   </head>
   <body>
-    <form method="">
-      <select>
-        <option>Kommune2</option>
-      </select>
-      <select>
-        <option>årstall</option>
-      </select>
-      <button>Finn firma</button>
-    </form>
-    <div class="resultat">
-      <div class="kolonne">Navn</div>
-      <div class="kolonne">Stiftelsesår</div>
-      <div class="kolonne">Kommune</div>
-      <div class="kolonne">Orgnr</div>
+    <div class="form">
+      <form method="">
+       
+        <input type="text" id="kommuneSearch" placeholder="Søk kommune" oninput="filtrerKommuner()">
+       
+          <input type="text" id="arstall" placeholder="Søk årstall"></input>
+         
+        
+        <button>Finn firma</button>
+      </form>
+      <div id="resultat"></div>
     </div>
+    <div class="resultat">
+      <div class="firmanavn">Firmanavn</div>
+      <div class="stiftelsesar">Stiftelsesår</div>
+      <div class="kommunenr">Kommunenr</div>
+      <div class="orgnr">Orgnr</div>
+    </div>
+
+
+
+    <!-- Container for dom manipulation -->
+    <div class="resultat" id="table-container"></div>
+
+
   </body>
+  
 </html>

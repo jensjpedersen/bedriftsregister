@@ -1,5 +1,5 @@
-let kommunenummer = {
-    'Oslo': 0301,
+export const kommunenummer = {
+    'Oslo': '0301',
     'Eigersund': 1101,
     'Stavanger': 1103,
     'Haugesund': 1106,
