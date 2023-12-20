@@ -4,8 +4,9 @@ import { kommunenummer } from './data/kommunenummer.mjs'
 const baseUrl = "https://data.brreg.no/enhetsregisteret/api/enheter?"
 
 
-function formatUrl(baseUrl, kommunenummer, year) {
-    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
+function formatUrl(baseUrl, kommunenummer, year, page=0) {
+    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&page=${page}&
+fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
     return url
 }
 
@@ -101,7 +102,7 @@ function displayBedData(domContainer, data, ...args) {
 async function main() {
     const { kommune, year } = getSelected();
     const kommunenummer = getKommunenummer(kommune)
-    const url = formatUrl(baseUrl, kommunenummer, year)
+    const url = formatUrl(baseUrl, kommunenummer, year, 0)
     const data = await fetchData(url)
     const bedData = data._embedded.enheter; 
 
