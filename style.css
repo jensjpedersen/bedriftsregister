@@ -22,7 +22,7 @@ body {
 .resultat {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0rem;
+  gap: 0.1rem;
   margin-top: 0.2rem;
   width: 100rem;
 }
@@ -55,10 +55,7 @@ input {
   padding: 1rem;
 }
 
-.firmanavn,
-.stiftelsesar,
-.kommunenr,
-.orgnr {
+.firmanavn, .stiftelsesar, .kommunenr, .orgnr {
   padding: 1rem;
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
@@ -66,9 +63,15 @@ input {
   background-color: lightblue;
 }
 
-select,
-option,
-button {
+.item {
+  padding: 1rem;
+  /* border-bottom:1px solid grey; */
+  text-transform: uppercase;
+  font-size: medium;
+  background-color: lightblue;
+}
+
+select, option, button {
   padding: 1rem 2rem;
 }
 
