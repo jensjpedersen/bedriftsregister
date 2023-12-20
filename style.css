@@ -11,29 +11,59 @@ html {
 }
 
 body {
+
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding:3rem;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    text-transform: lowercase;
 }
 
 .resultat {
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap:2rem;
-    margin-top: 3rem;
-    
+    gap:0rem;
+    margin-top: 0.2rem;
+    width:100rem;
 }
 
-.kolonne {
-    padding:2rem;
-    border-bottom:1px solig grey;
+.resultat .firmanavn:first-child(){
+    background-color: red;
+}
+
+.form {
+padding:2rem;
+    background-color: orange;
+    margin-bottom: 2rem;
+    width:100rem;
+}
+
+
+::selection {
+    background-color: yellow;
+    color: black;
+  }
+  
+
+
+.firmanavn, .stiftelsesar, .kommunenr, .orgnr {
+    padding:1rem;
+    /* border-bottom:1px solid grey; */
+    text-transform: uppercase;
+    font-size: medium;
     background-color: lightblue;
+
 }
 
 select, option, button {
     padding:1rem 2rem;
+}
+
+.firma {
+
+    background-color: red;
 }
 
