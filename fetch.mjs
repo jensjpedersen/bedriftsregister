@@ -16,7 +16,6 @@ async function fetchData(url) {
     return data
 }
 
-
 /**
   * Get selected value from dropdown 
   * TODO - implement userinput
