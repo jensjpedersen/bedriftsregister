@@ -52,7 +52,29 @@ function getNestedValue(obj, keysArr) {
     throw new Error('Keyerror: not valid key')
 }
 
-function DisplayBedData(data, ...args) {
+
+
+
+function displayTableHeader(domContainer) {
+    domContainer.innerHTML = `
+        <div class="firmanavn">Firmanavn</div>
+        <div class="stiftelsesar">Stiftelsesår</div>
+        <div class="kommunenr">Kommunenr</div>
+        <div class="orgnr">Orgnr</div>
+    `;
+
+}
+
+
+function display(domContainer, content, elementType, className) {
+    const element = document.createElement(elementType); 
+    element.className = className;
+    element.textContent = content;
+    domContainer.appendChild(element);
+}
+
+
+function displayBedData(domContainer, data, ...args) {
 
     if (arguments.length <= 1) {
         throw new Error('Requires at least two argument')
@@ -68,6 +90,7 @@ function DisplayBedData(data, ...args) {
     data.forEach((bedrift) => { 
         keyArray.forEach(key => {
             console.log(getNestedValue(bedrift, key))
+            display(domContainer, getNestedValue(bedrift, key), 'div', '')
         })
     })
 
@@ -82,13 +105,21 @@ async function main() {
     const url = formatUrl(baseUrl, kommunenummer, year)
     const data = await fetchData(url)
     const bedData = data._embedded.enheter; 
-    DisplayBedData(bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
+
+    let container = document.getElementById("table-container"); 
+
+    displayTableHeader(container)
+    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
 }
 
 
 
 main()
 
+// display(container, 'hei', 'div', 'test')
+// display(container, 'hade', 'div', 'test')
+// display(container, 'hsdkjf', 'div', 'test')
+// display(container, 'kdsjf', 'div', 'test')
 
 
 
