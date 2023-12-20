@@ -89,7 +89,6 @@ function displayBedData(domContainer, data, ...args) {
 
     data.forEach((bedrift) => { 
         keyArray.forEach(key => {
-            console.log(getNestedValue(bedrift, key))
             display(domContainer, getNestedValue(bedrift, key), 'div', 'item')
         })
     })
@@ -99,22 +98,40 @@ function displayBedData(domContainer, data, ...args) {
 
 
 
-async function main() {
+async function main(page=0) {
+
+
+    // Get data
     const { kommune, year } = getSelected();
     const kommunenummer = getKommunenummer(kommune)
-    const url = formatUrl(baseUrl, kommunenummer, year, 0)
+    const url = formatUrl(baseUrl, kommunenummer, year, page)
     const data = await fetchData(url)
+
+
+    // Ok 
+    //
+    // Handle page numbering
+
+    const totalPages = data.page.totalPages;
+    const pageNumber = data.page.number;
+    console.log(`Total pages: ${totalPages}`);
+    console.log(`Page number: ${pageNumber}`);
+    console.dir(data);
+
+    
+
+    // Display results 
     const bedData = data._embedded.enheter; 
-
     let container = document.getElementById("table-container"); 
-
     displayTableHeader(container)
     displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
 }
 
 
 
-main()
+main(0)
+
+
 
 
 
