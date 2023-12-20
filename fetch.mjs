@@ -90,7 +90,7 @@ function displayBedData(domContainer, data, ...args) {
     data.forEach((bedrift) => { 
         keyArray.forEach(key => {
             console.log(getNestedValue(bedrift, key))
-            display(domContainer, getNestedValue(bedrift, key), 'div', '')
+            display(domContainer, getNestedValue(bedrift, key), 'div', 'item')
         })
     })
 
@@ -116,10 +116,6 @@ async function main() {
 
 main()
 
-// display(container, 'hei', 'div', 'test')
-// display(container, 'hade', 'div', 'test')
-// display(container, 'hsdkjf', 'div', 'test')
-// display(container, 'kdsjf', 'div', 'test')
 
 
 

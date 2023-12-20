@@ -58,6 +58,15 @@ padding:2rem;
 
 }
 
+/* Duplicate of above */
+.item {
+    padding:1rem;
+    /* border-bottom:1px solid grey; */
+    text-transform: uppercase;
+    font-size: medium;
+    background-color: lightblue;
+}
+
 select, option, button {
     padding:1rem 2rem;
 }
