@@ -3,6 +3,7 @@
 
 .pageination-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 2rem;
     background-color: lightgray; 
@@ -11,13 +12,15 @@
     margin-top: 2px; 
 
     button {
+        width: 50px; 
+        height: 50px; 
         font-size: 2rem;
         font-weight: bold;
         /* background-color: lightblue; */
         background-color: #99bfcb; 
         border-radius: 4px;
         border: none;
-        margin: 0 5px;
+        margin: 5px 5px;
         
         &:hover {
             background-color: #6c878f;
