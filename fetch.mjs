@@ -96,6 +96,49 @@ function displayBedData(domContainer, data, ...args) {
 
 
 
+function submitPressed() {
+    // callback function for submit button
+    // get data from input fields
+    // call main function with data
+}
+
+function createPageination(totalPages, currentPage) {
+    console.log(totalPages, currentPage);
+
+    // const pageinationContainer = document.getElementById('pageination-container');
+    const pageinationContainer = document.getElementsByClassName('pageination-container')[0];
+    console.log(pageinationContainer);
+
+    pageinationContainer.innerHTML = '<button>&laquo</button>'
+
+    for (let i = 0; i < totalPages; i++) {
+        const page = document.createElement('button');
+        page.textContent = i+1;
+        page.addEventListener('click', () => {
+            console.log(`Page ${i} clicked`);
+        });
+
+        pageinationContainer.appendChild(page);
+
+
+
+
+    }
+
+    // XXX: Overwrites callback from above
+    // pageinationContainer.innerHTML +='<button>&raquo</button>'
+
+    const next = document.createElement('button');
+    next.textContent = '&raquo';
+    next.addEventListener('click', () => {
+        console.log('next');
+    });
+    pageinationContainer.appendChild(next);
+
+
+
+}
+
 
 async function main(page=0) {
 
@@ -116,6 +159,8 @@ async function main(page=0) {
     console.log(`Total pages: ${totalPages}`);
     console.log(`Page number: ${pageNumber}`);
     console.dir(data);
+    createPageination(totalPages, pageNumber);
+
 
     
 
