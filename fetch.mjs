@@ -12,6 +12,7 @@ fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
 
 
 async function fetchData(url) {
+    // TODO: handle errors
     const response = await fetch(url)
     const data = await response.json()
     return data
@@ -96,6 +97,54 @@ function displayBedData(domContainer, data, ...args) {
 
 
 
+function submitPressed() {
+    // callback function for submit button
+    // get data from input fields
+    // call main function with data
+}
+
+function createPageination(totalPages, currentPage) {
+    // TODO: remembe page on refresh
+    console.log(totalPages, currentPage);
+
+    // const pageinationContainer = document.getElementById('pageination-container');
+    const pageinationContainer = document.getElementsByClassName('pageination-container')[0];
+    console.log(pageinationContainer);
+
+    pageinationContainer.innerHTML = '<button>&laquo</button>'
+
+    for (let i = 0; i < totalPages; i++) {
+        const page = document.createElement('button');
+        page.textContent = i+1;
+        page.addEventListener('click', () => {
+            main(i);
+
+            console.log(`Page ${i} clicked`);
+            // document.getElementById('table-container').scrollIntoView();
+            window.scrollTo(0, 0);
+        });
+
+        pageinationContainer.appendChild(page);
+
+
+
+
+    }
+
+    // XXX: Overwrites callback from above
+    // pageinationContainer.innerHTML +='<button>&raquo</button>'
+
+    const next = document.createElement('button');
+    next.innerHTML = '&raquo';
+    next.addEventListener('click', () => {
+        console.log('next');
+    });
+    pageinationContainer.appendChild(next);
+
+
+
+}
+
 
 async function main(page=0) {
 
@@ -116,6 +165,8 @@ async function main(page=0) {
     console.log(`Total pages: ${totalPages}`);
     console.log(`Page number: ${pageNumber}`);
     console.dir(data);
+    createPageination(totalPages, pageNumber);
+
 
     
 
