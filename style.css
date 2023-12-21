@@ -24,11 +24,9 @@ h1 {
 }
 /* viser resulat av søk - viser firma orgnr osv... */
 .resultat {
- display:grid;
-grid-template-columns: repeat(4, 1fr);
-gap:0.2rem;
-  background-color: transparent;
-  font-size:1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.1rem;
   margin-top: 0.2rem;
   width: 100rem;
 }
@@ -62,7 +60,6 @@ color:white;
 
 }
 
-
 /* Form wrapper */
 .form {
   z-index: 0;
@@ -74,7 +71,6 @@ color:white;
   background-color: orange;
   margin-bottom: 2rem;
   width: 100rem;
-
 }
 form {
   width:100%;

@@ -4,13 +4,15 @@ import { kommunenummer } from './data/kommunenummer.mjs'
 const baseUrl = "https://data.brreg.no/enhetsregisteret/api/enheter?"
 
 
-function formatUrl(baseUrl, kommunenummer, year) {
-    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
+function formatUrl(baseUrl, kommunenummer, year, page=0) {
+    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&page=${page}&
+fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
     return url
 }
 
 
 async function fetchData(url) {
+    // TODO: handle errors
     const response = await fetch(url)
     const data = await response.json()
     return data
@@ -58,7 +60,6 @@ function displayTableHeader(domContainer) {
     domContainer.innerHTML = `
         <div class="firmanavn">Firmanavn</div>
         <div class="stiftelsesar">Stiftelsesår</div>
-        <div class="kommunenr">Kommunenr</div>
         <div class="orgnr">Orgnr</div>
     `;
 
@@ -88,7 +89,6 @@ function displayBedData(domContainer, data, ...args) {
 
     data.forEach((bedrift) => { 
         keyArray.forEach(key => {
-            console.log(getNestedValue(bedrift, key))
             display(domContainer, getNestedValue(bedrift, key), 'div', 'item')
         })
     })
@@ -97,23 +97,91 @@ function displayBedData(domContainer, data, ...args) {
 
 
 
+function submitPressed() {
+    // callback function for submit button
+    // get data from input fields
+    // call main function with data
+}
 
-async function main() {
+function createPageination(totalPages, currentPage) {
+    // TODO: remembe page on refresh
+    console.log(totalPages, currentPage);
+
+    // const pageinationContainer = document.getElementById('pageination-container');
+    const pageinationContainer = document.getElementsByClassName('pageination-container')[0];
+    console.log(pageinationContainer);
+
+    pageinationContainer.innerHTML = '<button>&laquo</button>'
+
+    for (let i = 0; i < totalPages; i++) {
+        const page = document.createElement('button');
+        page.textContent = i+1;
+        page.addEventListener('click', () => {
+            main(i);
+
+            console.log(`Page ${i} clicked`);
+            // document.getElementById('table-container').scrollIntoView();
+            window.scrollTo(0, 0);
+        });
+
+        pageinationContainer.appendChild(page);
+
+
+
+
+    }
+
+    // XXX: Overwrites callback from above
+    // pageinationContainer.innerHTML +='<button>&raquo</button>'
+
+    const next = document.createElement('button');
+    next.innerHTML = '&raquo';
+    next.addEventListener('click', () => {
+        console.log('next');
+    });
+    pageinationContainer.appendChild(next);
+
+
+
+}
+
+
+async function main(page=0) {
+
+
+    // Get data
     const { kommune, year } = getSelected();
     const kommunenummer = getKommunenummer(kommune)
-    const url = formatUrl(baseUrl, kommunenummer, year)
+    const url = formatUrl(baseUrl, kommunenummer, year, page)
     const data = await fetchData(url)
+
+
+    // Ok 
+    //
+    // Handle page numbering
+
+    const totalPages = data.page.totalPages;
+    const pageNumber = data.page.number;
+    console.log(`Total pages: ${totalPages}`);
+    console.log(`Page number: ${pageNumber}`);
+    console.dir(data);
+    createPageination(totalPages, pageNumber);
+
+
+    
+
+    // Display results 
     const bedData = data._embedded.enheter; 
-
     let container = document.getElementById("table-container"); 
-
     displayTableHeader(container)
-    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
+    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'organisasjonsnummer')
 }
 
 
 
-main()
+main(0)
+
+
 
 
 

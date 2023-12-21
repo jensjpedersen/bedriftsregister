@@ -1,0 +1,14 @@
+
+
+
+.pageination-container {
+
+    button {
+        background-color: #4CAF50;
+    }
+
+}
+
+.current-page {
+    background-color: #4CAF50;
+}
