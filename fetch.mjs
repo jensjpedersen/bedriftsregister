@@ -103,6 +103,7 @@ function submitPressed() {
 }
 
 function createPageination(totalPages, currentPage) {
+    // TODO: remembe page on refresh
     console.log(totalPages, currentPage);
 
     // const pageinationContainer = document.getElementById('pageination-container');
@@ -119,7 +120,7 @@ function createPageination(totalPages, currentPage) {
 
             console.log(`Page ${i} clicked`);
             // document.getElementById('table-container').scrollIntoView();
-            window.scrollTo(0, 0);
+            // window.scrollTo(0, 0);
         });
 
         pageinationContainer.appendChild(page);
@@ -133,7 +134,7 @@ function createPageination(totalPages, currentPage) {
     // pageinationContainer.innerHTML +='<button>&raquo</button>'
 
     const next = document.createElement('button');
-    next.textContent = '&raquo';
+    next.innerHTML = '&raquo';
     next.addEventListener('click', () => {
         console.log('next');
     });
