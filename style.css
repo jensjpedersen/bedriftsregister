@@ -19,7 +19,21 @@ body {
   
 }
 
-#resultat {
+h1 {
+  margin:2rem;
+}
+/* viser resulat av søk - viser firma orgnr osv... */
+.resultat {
+ display:grid;
+grid-template-columns: repeat(4, 1fr);
+gap:0.2rem;
+  background-color: transparent;
+  font-size:1.5rem;
+  margin-top: 0.2rem;
+  width: 100rem;
+}
+/* søk nedtrekksmeny viser kommuner resulat søk - velg kommune */
+#resultatSok {
   position:absolute;
   top:95px;
   left:0px;
@@ -30,14 +44,14 @@ body {
   width: 30rem;
 }
 
-#resultat p {
+#resultatSok p {
   padding:1rem;
   background-color: rgb(240, 240, 240);
   color:rgb(49, 49, 49);
   border-bottom:1px solid rgb(205, 205, 205);
   }
 
-#resultat p:hover {
+#resultatSok p:hover {
 background-color: orange;
 color:white;
 }
@@ -48,9 +62,6 @@ color:white;
 
 }
 
-.resultat .firmanavn:first-child() {
-  background-color: red;
-}
 
 /* Form wrapper */
 .form {
@@ -75,6 +86,7 @@ max-width: 40rem;
 width:100%;
 }
 
+/* Viser antall treff i kommuner */
 #resultCount{
 /* background-color: lightblue; */
 margin-top:0.5rem;
@@ -87,7 +99,7 @@ color:white;
 
 
 ::selection {
-  background-color: orange;
+  background-color:black;
   color: white;
   padding: 1rem;
 }
@@ -114,37 +126,4 @@ select, option, button {
 
 .firma {
   background-color: red;
-}
-
-
-/* SEARCH BOX */
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 1.6rem;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid rgb(221, 221, 221);
-  font-size: 1.2rem;
-}
-
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
-}
-
-#myTable tr {
-  border-bottom: 1px solid rgb(221, 221, 221);
-}
-
-#myTable tr.header, #myTable tr:hover {
-  background-color: rgb(241, 241, 241);
 }
