@@ -92,7 +92,7 @@ function submitPressed() {
 }
 
 function createPageination(onclickCallback, kommune, year, totalPages, currentPage) {
-    // TODO: remembe page on refresh
+    // TODO: remember page on refresh
     console.log(totalPages, currentPage);
 
     // const pageinationContainer = document.getElementById('pageination-container');
@@ -106,8 +106,12 @@ function createPageination(onclickCallback, kommune, year, totalPages, currentPa
         page.textContent = i+1;
         page.addEventListener('click', () => {
             onclickCallback(kommune, year, i);
-            window.scrollTo(0, 0);
+            // XXX: enable - window.scrollTo(0, 0);
         });
+
+        if (i === currentPage) {
+            page.classList.add('current-page');
+        }
 
         pageinationContainer.appendChild(page);
 
@@ -162,7 +166,7 @@ export async function main(kommune, year, page=0) {
 
 
 
-// main('Skien', '2020', 0)
+main('Skien', '2020', 0)
 
 
 
