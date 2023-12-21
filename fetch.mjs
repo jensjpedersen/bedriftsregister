@@ -18,18 +18,6 @@ async function fetchData(url) {
     return data
 }
 
-/**
-  * Get selected value from dropdown 
-  * TODO - implement userinput
-  */ 
-function getSelected() {
-    return {
-        kommune: 'Skien', 
-        year: 2020};
-}
-
-
-
 function getKommunenummer(kommune) {
     const nummer = kommunenummer[kommune]
 
@@ -103,7 +91,7 @@ function submitPressed() {
     // call main function with data
 }
 
-function createPageination(totalPages, currentPage) {
+function createPageination(onclickCallback, kommune, year, totalPages, currentPage) {
     // TODO: remembe page on refresh
     console.log(totalPages, currentPage);
 
@@ -117,10 +105,7 @@ function createPageination(totalPages, currentPage) {
         const page = document.createElement('button');
         page.textContent = i+1;
         page.addEventListener('click', () => {
-            main(i);
-
-            console.log(`Page ${i} clicked`);
-            // document.getElementById('table-container').scrollIntoView();
+            onclickCallback(kommune, year, i);
             window.scrollTo(0, 0);
         });
 
@@ -146,11 +131,10 @@ function createPageination(totalPages, currentPage) {
 }
 
 
-async function main(page=0) {
+export async function main(kommune, year, page=0) {
 
 
     // Get data
-    const { kommune, year } = getSelected();
     const kommunenummer = getKommunenummer(kommune)
     const url = formatUrl(baseUrl, kommunenummer, year, page)
     const data = await fetchData(url)
@@ -165,10 +149,8 @@ async function main(page=0) {
     console.log(`Total pages: ${totalPages}`);
     console.log(`Page number: ${pageNumber}`);
     console.dir(data);
-    createPageination(totalPages, pageNumber);
+    createPageination(main, kommune, year, totalPages, pageNumber);
 
-
-    
 
     // Display results 
     const bedData = data._embedded.enheter; 
@@ -179,7 +161,8 @@ async function main(page=0) {
 
 
 
-main(0)
+
+// main('Skien', '2020', 0)
 
 
 

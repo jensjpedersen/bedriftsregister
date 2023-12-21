@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="pageination.css">
-    <!-- <script src="./script.js" defer></script> -->
     <script src="./fetch.mjs" type="module"></script>
     <script src="./sok-kommune.js" type="module"></script>
-    <!-- <script src="./data/kommunenummer.js" type="module"></script> -->
+    <script src="./submit_form.mjs" type="module"></script>
     <title>Kommune Søk</title>
   </head>
   <body>
       <h1>Søk bedrifter i kommmune</h1>
       <div class="form">
-      <form>
+      <form id="form">
           <input type="text" id="searchInput" placeholder="Søk kommune navn/nummer. Klikk i liste for å velge.">
           <input class="velgAarstall" type="text" id="velgAarstall" placeholder="2022">
           <button id="searchButton">Søk</button>
