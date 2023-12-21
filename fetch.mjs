@@ -12,6 +12,7 @@ fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
 
 
 async function fetchData(url) {
+    // TODO: handle errors
     const response = await fetch(url)
     const data = await response.json()
     return data
@@ -120,7 +121,7 @@ function createPageination(totalPages, currentPage) {
 
             console.log(`Page ${i} clicked`);
             // document.getElementById('table-container').scrollIntoView();
-            // window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
         });
 
         pageinationContainer.appendChild(page);
