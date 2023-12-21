@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Kommune Søk</title>
+</head>
+<body>
+    <h1>Søk bedrifter i kommmune</h1>
+    <div class="form">
+        <form>
+        <input type="text" id="searchInput" placeholder="Søk kommune navn/nummer. Klikk i liste for å velge.">
+        <input class="velgAarstall" type="text" id="velgAarstall" placeholder="2022">
+        <button id="searchButton">Søk</button>
+        <div id="resultCount"></div>
+        <div id="resultat"></div>
+        <div id="resultatApi"></div>
+    </form>
+
+    </div>
+
+    <script type="module">
+        import { kommunenummer } from './data/kommunenummer.mjs';
+
+        function search() {
+            const searchInput = document.getElementById('searchInput');
+            const resultContainer = document.getElementById('resultat');
+            const resultCountContainer = document.getElementById('resultCount');
+            resultContainer.innerHTML = '';
+            resultCountContainer.innerHTML = '';
+
+            // Lag et array for å lagre og kunne sortere treffene
+            const matches = [];
+
+            // Sjekker om søkeordet er en del av en kommune eller kommunenummer i kommunenummer-objektet
+            for (const kommune in kommunenummer) {
+                const kommunenummerVerdi = kommunenummer[kommune].toString();
+
+                if (kommune.toLowerCase().includes(searchInput.value.toLowerCase()) || kommunenummerVerdi.includes(searchInput.value)) {
+                    matches.push({ kommune, kommunenummerVerdi });
+                }
+
+                // Begrens antallet treff til 10
+                if (matches.length >= 10) {
+                    break;
+                }
+            }
+
+            // Sorter treffene alfabetisk basert på kommune
+            matches.sort((a, b) => a.kommune.localeCompare(b.kommune));
+
+            // Vis antall treff
+            resultCountContainer.textContent = `Antall treff: ${matches.length}`;
+
+            // Vis resultatene
+            for (const match of matches) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = `${match.kommune} ${match.kommunenummerVerdi}`;
+
+                // Legg til en hendelseslytter for hvert <p>-element
+                paragraph.addEventListener('click', function() {
+                    // Oppdater inputfeltet når et resultat klikkes
+                    searchInput.value = `${match.kommune} ${match.kommunenummerVerdi}`;
+                    
+                    // Skjul resultatlisten
+                    resultContainer.innerHTML = '';
+                    resultCountContainer.innerHTML = '';
+                });
+
+                resultContainer.appendChild(paragraph);
+            }
+        }
+
+        // Knytt funksjonen til input-hendelsen for å oppdatere resultater mens du skriver
+        document.getElementById('searchInput').addEventListener('input', search);
+
+        // Legg til hendelseslytter for å tømme inputfeltet når det klikkes
+        document.getElementById('searchInput').addEventListener('click', function () {
+            this.value = '';
+        });
+    </script>
+
+</body>
+</html>
+

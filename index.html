@@ -13,12 +13,27 @@
     <div class="form">
       <form method="">
        
-        <input type="text" id="kommuneSearch" placeholder="Søk kommune" oninput="filtrerKommuner()">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Søk kommune..." title="Type in a name">
+
+        <table id="myTable">
+          <tr class="header">
+            <th style="width:60%;">Kommune</th>
+            <th style="width:40%;">Kommunenr</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Germany</td>
+          </tr>
+          
+        </table>
+
+
+        <!-- <input type="text" id="kommuneSearch" placeholder="Søk kommune" oninput="filtrerKommuner()">
        
-          <input type="text" id="arstall" placeholder="Søk årstall"></input>
+          <input type="text" id="arstall" placeholder="Søk årstall"></input> -->
          
         
-        <button>Finn firma</button>
+       
       </form>
       <div id="resultat"></div>
     </div>
