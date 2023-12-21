@@ -16,41 +16,86 @@ body {
   padding: 3rem;
   font-size: 1.2rem;
   font-family: sans-serif;
-  text-transform: lowercase;
+  
 }
 
+h1 {
+  margin:2rem;
+}
+/* viser resulat av søk - viser firma orgnr osv... */
 .resultat {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.1rem;
   margin-top: 0.2rem;
   width: 100rem;
 }
+/* søk nedtrekksmeny viser kommuner resulat søk - velg kommune */
+#resultatSok {
+  position:absolute;
+  top:95px;
+  left:0px;
+  z-index: 99;
+  background-color: lightgrey;
+  font-size:1.5rem;
+  margin-top: 0.2rem;
+  width: 30rem;
+}
 
-.resultat .firmanavn:first-child() {
-  background-color: red;
+#resultatSok p {
+  padding:1rem;
+  background-color: rgb(240, 240, 240);
+  color:rgb(49, 49, 49);
+  border-bottom:1px solid rgb(205, 205, 205);
+  }
+
+#resultatSok p:hover {
+background-color: orange;
+color:white;
+}
+
+
+.velgAarstall {
+  width:9rem;
+
 }
 
 /* Form wrapper */
 .form {
-  
-  padding: 1rem;
+  z-index: 0;
+  position:relative;
+  display:flex;
+  gap:2rem;
+  padding: 2rem;
+  align-items: center;
   background-color: orange;
   margin-bottom: 2rem;
   width: 100rem;
 }
 form {
-  display:flex;
-  gap:2rem;
   width:100%;
 }
 
 input {
   padding:1rem;
+max-width: 40rem;
+width:100%;
 }
 
+/* Viser antall treff i kommuner */
+#resultCount{
+/* background-color: lightblue; */
+margin-top:0.5rem;
+font-size:1.2rem;
+border-radius:4px;
+width:12rem;
+color:white;
+}
+
+
+
 ::selection {
-  background-color: orange;
+  background-color:black;
   color: white;
   padding: 1rem;
 }
