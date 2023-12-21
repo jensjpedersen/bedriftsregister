@@ -4,8 +4,9 @@ import { kommunenummer } from './data/kommunenummer.mjs'
 const baseUrl = "https://data.brreg.no/enhetsregisteret/api/enheter?"
 
 
-function formatUrl(baseUrl, kommunenummer, year) {
-    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
+function formatUrl(baseUrl, kommunenummer, year, page=0) {
+    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&page=${page}&
+fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
     return url
 }
 
@@ -58,7 +59,6 @@ function displayTableHeader(domContainer) {
     domContainer.innerHTML = `
         <div class="firmanavn">Firmanavn</div>
         <div class="stiftelsesar">Stiftelsesår</div>
-        <div class="kommunenr">Kommunenr</div>
         <div class="orgnr">Orgnr</div>
     `;
 
@@ -88,7 +88,6 @@ function displayBedData(domContainer, data, ...args) {
 
     data.forEach((bedrift) => { 
         keyArray.forEach(key => {
-            console.log(getNestedValue(bedrift, key))
             display(domContainer, getNestedValue(bedrift, key), 'div', 'item')
         })
     })
@@ -98,22 +97,40 @@ function displayBedData(domContainer, data, ...args) {
 
 
 
-async function main() {
+async function main(page=0) {
+
+
+    // Get data
     const { kommune, year } = getSelected();
     const kommunenummer = getKommunenummer(kommune)
-    const url = formatUrl(baseUrl, kommunenummer, year)
+    const url = formatUrl(baseUrl, kommunenummer, year, page)
     const data = await fetchData(url)
+
+
+    // Ok 
+    //
+    // Handle page numbering
+
+    const totalPages = data.page.totalPages;
+    const pageNumber = data.page.number;
+    console.log(`Total pages: ${totalPages}`);
+    console.log(`Page number: ${pageNumber}`);
+    console.dir(data);
+
+    
+
+    // Display results 
     const bedData = data._embedded.enheter; 
-
     let container = document.getElementById("table-container"); 
-
     displayTableHeader(container)
-    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
+    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'organisasjonsnummer')
 }
 
 
 
-main()
+main(0)
+
+
 
 
 
