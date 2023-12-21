@@ -59,7 +59,6 @@ function displayTableHeader(domContainer) {
     domContainer.innerHTML = `
         <div class="firmanavn">Firmanavn</div>
         <div class="stiftelsesar">Stiftelsesår</div>
-        <div class="kommunenr">Kommunenr</div>
         <div class="orgnr">Orgnr</div>
     `;
 
@@ -124,7 +123,7 @@ async function main(page=0) {
     const bedData = data._embedded.enheter; 
     let container = document.getElementById("table-container"); 
     displayTableHeader(container)
-    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'forretningsadresse.kommune', 'organisasjonsnummer')
+    displayBedData(container, bedData, 'navn', 'stiftelsesdato', 'organisasjonsnummer')
 }
 
 
