@@ -6,50 +6,30 @@
     <link rel="stylesheet" href="style.css" />
     <!-- <script src="./script.js" defer></script> -->
     <script src="./fetch.mjs" type="module"></script>
+    <script src="./sok-kommune.js" type="module"></script>
     <!-- <script src="./data/kommunenummer.js" type="module"></script> -->
-    <title>Document</title>
+    <title>Kommune Søk</title>
   </head>
   <body>
-    <div class="form">
-      <form method="">
-       
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Søk kommune..." title="Type in a name">
-
-        <table id="myTable">
-          <tr class="header">
-            <th style="width:60%;">Kommune</th>
-            <th style="width:40%;">Kommunenr</th>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Germany</td>
-          </tr>
-          
-        </table>
-
-
-        <!-- <input type="text" id="kommuneSearch" placeholder="Søk kommune" oninput="filtrerKommuner()">
-       
-          <input type="text" id="arstall" placeholder="Søk årstall"></input> -->
-         
-        
-       
-      </form>
-      <div id="resultat"></div>
-    </div>
-    <div class="resultat">
-      <div class="firmanavn">Firmanavn</div>
-      <div class="stiftelsesar">Stiftelsesår</div>
-      <div class="kommunenr">Kommunenr</div>
-      <div class="orgnr">Orgnr</div>
-    </div>
-
-
-
-    <!-- Container for dom manipulation -->
-    <div class="resultat" id="table-container"></div>
-
-
-  </body>
+      <h1>Søk bedrifter i kommmune</h1>
+      <div class="form">
+      <form>
+          <input type="text" id="searchInput"              placeholder="Søk kommune navn/nummer. Klikk i liste for å velge.">
+          <input class="velgAarstall" type="text" id="velgAarstall" placeholder="2022">
+          <button id="searchButton">Søk</button>
+          <div id="resultCount"></div>
+            <div id="resultat"></div>
+            <!-- <div id="resultatApi"></div> -->
+          </form>
   
-</html>
+      </div>
+  
+      <!-- Container for dom manipulation -->
+<div class="resultat" id="table-container"></div>
+  
+  </body>
+  </html>
+  
+
+
+

@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Kommune Søk</title>
-</head>
-<body>
-    <h1>Søk bedrifter i kommmune</h1>
-    <div class="form">
-        <form>
-        <input type="text" id="searchInput" placeholder="Søk kommune navn/nummer. Klikk i liste for å velge.">
-        <input class="velgAarstall" type="text" id="velgAarstall" placeholder="2022">
-        <button id="searchButton">Søk</button>
-        <div id="resultCount"></div>
-        <div id="resultat"></div>
-        <div id="resultatApi"></div>
-    </form>
-
-    </div>
-
-    <script type="module">
         import { kommunenummer } from './data/kommunenummer.mjs';
 
         function search() {
@@ -79,8 +56,3 @@
         document.getElementById('searchInput').addEventListener('click', function () {
             this.value = '';
         });
-    </script>
-
-</body>
-</html>
-
