@@ -38,7 +38,7 @@
                 // Legg til en hendelseslytter for hvert <p>-element
                 paragraph.addEventListener('click', function() {
                     // Oppdater inputfeltet når et resultat klikkes
-                    searchInput.value = `${match.kommune} ${match.kommunenummerVerdi}`;
+                    searchInput.value = `${match.kommune} (kommunenr: ${match.kommunenummerVerdi})`;
                     
                     // Skjul resultatlisten
                     resultContainer.innerHTML = '';
