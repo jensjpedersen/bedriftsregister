@@ -115,7 +115,11 @@ function createPageination(totalPages, currentPage) {
         const page = document.createElement('button');
         page.textContent = i+1;
         page.addEventListener('click', () => {
+            main(i);
+
             console.log(`Page ${i} clicked`);
+            // document.getElementById('table-container').scrollIntoView();
+            window.scrollTo(0, 0);
         });
 
         pageinationContainer.appendChild(page);
