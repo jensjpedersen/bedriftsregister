@@ -8,7 +8,7 @@
     background-color: lightgray; 
     /* opacity: 0.1; */
     width: 100rem;
-    margin-top: 10px; 
+    margin-top: 2px; 
 
     button {
         font-size: 2rem;
@@ -27,9 +27,6 @@
 
 
     .current-page {
-        /* background-color: #0000; */
-        /* background-color: #4CAF50; */
-        /* background-color: blue; */
         opacity: 0.7;
         /* color: white; */
     }
