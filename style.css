@@ -30,7 +30,7 @@ h1 {
 .resultat {
   display: grid;
   grid-template-columns: 60% 20% 20%;
-  gap: 0.1rem;
+  /* gap: 0.1rem; */
   margin-top: 0.2rem;
   width: 100rem;
 }
@@ -122,6 +122,9 @@ color:white;
 
 .item {
   padding: 1rem;
+  border-bottom:1px solid lightgrey;
+
+
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
   font-size:small;

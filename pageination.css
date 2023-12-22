@@ -2,11 +2,17 @@
 
 
 .pageination-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    background-color: lightgray; 
+    /* opacity: 0.1; */
+    width: 100rem;
+    margin-top: 2px; 
 
     button {
-<<<<<<< Updated upstream
         background-color: #4CAF50;
-=======
         display: flex;
         justify-content: center;
         align-items: center;
@@ -32,8 +38,6 @@
         /* background-color: green; */
         /* opacity: 0.5; */
         color: white;
-
->>>>>>> Stashed changes
     }
 
 }

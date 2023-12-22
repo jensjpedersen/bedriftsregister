@@ -92,22 +92,39 @@ function submitPressed() {
 }
 
 function createPageination(onclickCallback, kommune, year, totalPages, currentPage) {
-    // TODO: remembe page on refresh
-    console.log(totalPages, currentPage);
 
     // const pageinationContainer = document.getElementById('pageination-container');
     const pageinationContainer = document.getElementsByClassName('pageination-container')[0];
     console.log(pageinationContainer);
 
-    pageinationContainer.innerHTML = '<button>&laquo</button>'
+    // pageinationContainer.innerHTML = '<button>&laquo</button>'
+    pageinationContainer.innerHTML = '';
+
+    const prev = document.createElement('button');
+    prev.innerHTML = '&laquo';
+    prev.addEventListener('click', () => {
+        console.log('prev');
+
+        if (currentPage >= 1) {
+            onclickCallback(kommune, year, currentPage-1);
+        }
+
+    });
+    pageinationContainer.appendChild(prev);
 
     for (let i = 0; i < totalPages; i++) {
         const page = document.createElement('button');
-        page.textContent = i+1;
+        page.textContent = i + 1;
         page.addEventListener('click', () => {
+
+
             onclickCallback(kommune, year, i);
-            window.scrollTo(0, 0);
+
         });
+
+        if (i === currentPage) {
+            page.classList.add('current-page');
+        }
 
         pageinationContainer.appendChild(page);
 
@@ -123,6 +140,11 @@ function createPageination(onclickCallback, kommune, year, totalPages, currentPa
     next.innerHTML = '&raquo';
     next.addEventListener('click', () => {
         console.log('next');
+
+        if (currentPage <= totalPages - 2) {
+            onclickCallback(kommune, year, currentPage+1);
+        }
+
     });
     pageinationContainer.appendChild(next);
 
@@ -150,7 +172,7 @@ export async function main(kommune, year, page=0) {
     console.log(`Page number: ${pageNumber}`);
     console.dir(data);
     createPageination(main, kommune, year, totalPages, pageNumber);
-
+    window.scrollTo(0, 0);
 
     // Display results 
     const bedData = data._embedded.enheter; 
