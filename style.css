@@ -42,10 +42,7 @@ h1 {
   margin-top: 0.2rem;
   width: 100%;
 }
-.resultat:first-child {
-  background-color:blue;
-  /* Ny stil for første rad */;
-}
+
 
 /* søk nedtrekksmeny viser kommuner resulat søk - velg kommune */
 #resultatSok {
@@ -123,11 +120,14 @@ color:white;
 }
 
 .firmanavn, .stiftelsesar, .kommunenr, .orgnr {
+  display:flex;
+  
   padding: 1rem;
+
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
   font-size: small;
-  background-color: lightgrey;
+  background-color: lightblue;
   font-weight: 600;
 }
 
@@ -186,6 +186,14 @@ form {
   background-color: grey;
   color:white;
   }
+
+.item:nth-child(3n + 1) {
+    background-color:rgb(105, 105, 105);
+    font-weight: bold;
+    color:lightblue;
+    /* Ny stil for første rad */;
+  }
+  
 
 }
   
