@@ -127,7 +127,7 @@ color:white;
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
   font-size: small;
-  background-color: lightblue;
+  background-color: lightgrey;
   font-weight: 600;
 }
 
@@ -144,10 +144,6 @@ color:white;
 
 select, option, button {
   padding: 1rem 2rem;
-}
-
-.firma {
-  background-color: red;
 }
 
 @media only screen and (max-width: 667px) {

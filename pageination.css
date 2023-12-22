@@ -11,8 +11,9 @@
     padding:2rem;
     background-color: lightgrey;
 
+}
 
-    button {
+.pageination-container button {
 
         background-color: rgg(0,0,0);
 
@@ -29,21 +30,19 @@
         border: none;
         margin: 5px 5px;
         
-        &:hover {
-            background-color: rgb(108, 135, 143);
-            color: white;
-        }
         
-    }
-
-
-    .current-page {
-        border:2px solid white;
-        /* background-color: green; */
-        /* opacity: 0.5; */
-        color: white;
-
-
-    }
-
 }
+
+.pageination-container button:hover {
+    background-color: rgb(108, 135, 143);
+    color: white;
+}
+
+
+.pageination-container .current-page {
+    border:2px solid white;
+    /* background-color: green; */
+    /* opacity: 0.5; */
+    color: white;
+}
+
