@@ -5,7 +5,7 @@ const baseUrl = "https://data.brreg.no/enhetsregisteret/api/enheter?"
 
 
 function formatUrl(baseUrl, kommunenummer, year, page=0) {
-    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=100&page=${page}&
+    const url = `${baseUrl}kommunenummer=${kommunenummer}&size=10&page=${page}&
 fraStiftelsesdato=${year}-01-01&tilStiftelsesdato=${year}-12-31`
     return url
 }

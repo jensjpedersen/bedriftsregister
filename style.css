@@ -13,19 +13,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 1rem;
   font-size: 1.2rem;
   font-family: sans-serif;
+  background-color: rgb(36, 36, 36);
   
 }
 
 h1 {
-  margin:2rem;
+
+  margin:0.2rem;
+  font-size: 1.8rem;
+  color:rgb(255, 226, 184);
 }
 /* viser resulat av søk - viser firma orgnr osv... */
 .resultat {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 60% 20% 20%;
   gap: 0.1rem;
   margin-top: 0.2rem;
   width: 100rem;
@@ -33,10 +37,10 @@ h1 {
 /* søk nedtrekksmeny viser kommuner resulat søk - velg kommune */
 #resultatSok {
   position:absolute;
-  top:95px;
-  left:0px;
+  top:80px;
+  left:390px;
   z-index: 99;
-  background-color: lightgrey;
+  
   font-size:1.5rem;
   margin-top: 0.2rem;
   width: 30rem;
@@ -44,8 +48,8 @@ h1 {
 
 #resultatSok p {
   padding:1rem;
-  background-color: rgb(240, 240, 240);
-  color:rgb(49, 49, 49);
+  background-color: black;
+  color:white;
   border-bottom:1px solid rgb(205, 205, 205);
   }
 
@@ -64,19 +68,25 @@ color:white;
 .form {
   z-index: 0;
   position:relative;
-  display:flex;
-  gap:2rem;
+  /* display:flex;
+  gap:2rem; */
   padding: 2rem;
+ 
   align-items: center;
   background-color: orange;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   width: 100rem;
 }
 form {
   width:100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap:1rem;
 }
 
 input {
+  
   padding:1rem;
 max-width: 40rem;
 width:100%;
@@ -84,6 +94,7 @@ width:100%;
 
 /* Viser antall treff i kommuner */
 #resultCount{
+  display:none;
 /* background-color: lightblue; */
 margin-top:0.5rem;
 font-size:1.2rem;
@@ -104,15 +115,16 @@ color:white;
   padding: 1rem;
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
-  font-size: medium;
-  background-color: lightblue;
+  font-size: small;
+  background-color: lightgrey;
+  font-weight: 600;
 }
 
 .item {
   padding: 1rem;
   /* border-bottom:1px solid grey; */
   text-transform: uppercase;
-  font-size: medium;
+  font-size:small;
   background-color: lightblue;
 }
 

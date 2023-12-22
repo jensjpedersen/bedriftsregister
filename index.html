@@ -11,16 +11,20 @@
     <title>Kommune Søk</title>
   </head>
   <body>
-      <h1>Søk bedrifter i kommmune</h1>
+     
       <div class="form">
+        
       <form id="form">
-          <input type="text" id="searchInput" placeholder="Søk kommune navn/nummer. Klikk i liste for å velge.">
+        <h1>Søk i bedriftsregister</h1>
+        <div id="resultCount"></div>
+          <input type="text" id="searchInput" placeholder="Søk kommune. Klikk i liste for å velge.">
           <input class="velgAarstall" type="text" id="velgAarstall" placeholder="2022">
           <button id="searchButton">Søk</button>
-          <div id="resultCount"></div>
+          
             <div id="resultatSok"></div>
             <div class="resultContainer"></div>
             <!-- <div id="resultatApi"></div> -->
+          
           </form>
   
       </div>
