@@ -2,11 +2,20 @@
 
 
 .pageination-container {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding:2rem;
+    background-color: lightgrey;
+
 
     button {
-<<<<<<< Updated upstream
-        background-color: #4CAF50;
-=======
+
+        background-color: rgg(0,0,0);
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,9 +30,10 @@
         margin: 5px 5px;
         
         &:hover {
-            background-color: #6c878f;
+            background-color: rgb(108, 135, 143);
             color: white;
         }
+        
     }
 
 
@@ -33,11 +43,7 @@
         /* opacity: 0.5; */
         color: white;
 
->>>>>>> Stashed changes
+
     }
 
-}
-
-.current-page {
-    background-color: #4CAF50;
 }
