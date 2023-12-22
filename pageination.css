@@ -2,17 +2,20 @@
 
 
 .pageination-container {
-    display: flex;
+    display:flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
-    padding: 2rem;
-    background-color: lightgray; 
-    /* opacity: 0.1; */
-    width: 100rem;
-    margin-top: 2px; 
+    align-items: center;
+    width:100%;
+    padding:2rem;
+    background-color: lightgrey;
+
 
     button {
-        background-color: #4CAF50;
+
+        background-color: rgg(0,0,0);
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -27,9 +30,10 @@
         margin: 5px 5px;
         
         &:hover {
-            background-color: #6c878f;
+            background-color: rgb(108, 135, 143);
             color: white;
         }
+        
     }
 
 
@@ -38,10 +42,8 @@
         /* background-color: green; */
         /* opacity: 0.5; */
         color: white;
+
+
     }
 
-}
-
-.current-page {
-    background-color: #4CAF50;
 }
